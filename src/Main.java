@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         task1();
         task2();
-
+        task3();
     }
 
     public static boolean checkYear(int year) {
@@ -19,44 +19,51 @@ public class Main {
         } else {
             System.out.println(year + " год не является високосным");
         }
-
     }
-    public static String checkOsType (int osType, int deviceYear) {
+    public static String checkDevice (int osType, int deviceYear) {
         String message;
-        if (osType == 1) {
-            message = "Android";
-        } else if (osType == 0) {
-                  message = "iOS";
+        int currentYear = LocalDate.now().getYear();
+        if (osType == 1 && deviceYear < currentYear ) {
+            message = "Установите облегченную версию приложения для Android по ссылке";
+        } else if (osType == 1 && deviceYear == currentYear) {
+            message = "Установите версию приложения для Android по ссылке";
+        } else if (osType == 0 && deviceYear < currentYear ) {
+            message = "Установите облегченную версию приложения для iOS по ссылке";
+        } else if (osType == 0 && deviceYear == currentYear) {
+            message = "Установите версию приложения для iOS по ссылке";
         } else {
-                  message = "Не поддерживается";
+            message = "Ваша OS не поддерживается";
         }
-
         return message;
     }
 
     public static void task2() {
         System.out.println("\nЗадача 2");
         int clientOsType = 0;
-        int currentYear = LocalDate.now().getYear();
         int clientDeviceYear = 2022;
-        System.out.println(checkOsType(clientOsType, clientDeviceYear));
+        System.out.println(checkDevice(clientOsType, clientDeviceYear));
 
-//        byte clientOS = 2;
-//        int iOs=0;
-//        int Android=1;
-//        short clientDeviceYear = 2016;
-//        int checkYear = 2015;
-//        if (clientOS == iOs && clientDeviceYear < checkYear) {
-//            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
-//        }else if (clientOS == iOs && clientDeviceYear >= checkYear) {
-//            System.out.println("Установите версию приложения для iOS по ссылке");
-//        }else if (clientOS == Android && clientDeviceYear < checkYear) {
-//            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-//        }else if (clientOS == Android && clientDeviceYear >= checkYear) {
-//            System.out.println("Установите версию приложения для Android по ссылке");
-//        }else {
-//            System.out.println("Ваша OS не поддерживается");
-//        }
+    }
 
+    public static int calculateDeliveryTime(int deliveryDistance) {
+        int days = 1;
+        if (deliveryDistance < 20) {
+            return days;
+        } else if (deliveryDistance <= 60) {
+            days+=1;
+        } else  {
+            days+=2;
+        }
+        return days;
+    }
+    public static void task3() {
+        System.out.println("\nЗадача 3");
+        short deliveryDistance = 117;
+
+        if (deliveryDistance > 100) {
+            System.out.println("Свыше 100 км доставки нет");
+        } else {
+            System.out.println("Потребуется дней: " + calculateDeliveryTime(deliveryDistance));
+        }
     }
 }
