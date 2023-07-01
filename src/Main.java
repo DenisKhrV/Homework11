@@ -17,7 +17,7 @@ public class Main {
     }
     public static void task1() {
         System.out.println("Задача 1");
-        int year = 2023;
+        int year = 2020;
         checkYear(year);
     }
     public static String checkDevice (int osType, int deviceYear) {
