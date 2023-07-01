@@ -8,17 +8,17 @@ public class Main {
         task3();
     }
 
-    public static boolean checkYear(int year) {
-        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
-    }
-    public static void task1() {
-        System.out.println("Задача 1");
-        int year = 2023;
-        if (checkYear(year)) {
+    public static void checkYear(int year) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println(year + " год является високосным");
         } else {
             System.out.println(year + " год не является високосным");
         }
+    }
+    public static void task1() {
+        System.out.println("Задача 1");
+        int year = 2023;
+        checkYear(year);
     }
     public static String checkDevice (int osType, int deviceYear) {
         String message;
